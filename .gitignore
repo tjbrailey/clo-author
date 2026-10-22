@@ -54,3 +54,11 @@ Thumbs.db
 # *.rds
 # output/**/*.rds
 docs/
+
+# Scraped data (large files, not committed)
+data/raw/
+data/cleaned/
+scripts/scraping/utils/__pycache__/
+scripts/scraping/__pycache__/
+
+*.csv

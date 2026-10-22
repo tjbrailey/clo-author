@@ -1,0 +1,12 @@
+requests>=2.31
+httpx>=0.26
+beautifulsoup4>=4.12
+lxml>=4.9
+pandas>=2.0
+pyarrow>=14.0
+tqdm>=4.66
+tenacity>=8.2
+fake-useragent>=1.4
+geopy>=2.4
+cdx-toolkit>=0.9
+waybackpy>=3.0

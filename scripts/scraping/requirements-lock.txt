@@ -1,0 +1,24 @@
+# requirements-lock.txt — exact versions used for the 2026-09-29 re-run of
+# 03_merge_deduplicate.py / 04_classify_psc.py / audit_classification.py.
+# Captured from the installed environment (importlib.metadata), not pip-compiled:
+# transitive dependencies other than numpy are not pinned.
+# Python: 3.12.2 (Windows 11, x64). Minimum supported: Python >= 3.10
+# (the code uses `X | None` type hints).
+# Install: py -3.12 -m pip install -r scripts/scraping/requirements-lock.txt
+requests==2.32.3
+httpx==0.28.1
+beautifulsoup4==4.13.4
+lxml==6.0.2
+pandas==2.2.3
+numpy==2.2.6
+pyarrow==23.0.1
+tqdm==4.67.1
+tenacity==9.1.4
+fake-useragent==2.2.0
+geopy==2.4.1
+cdx-toolkit==0.9.38
+waybackpy==3.0.6
+
+# System tools (2026-09-30)
+# tesseract 5.5.0 at C:/Program Files/Tesseract-OCR/tesseract.exe (not on PATH; set pytesseract.pytesseract.tesseract_cmd)
+# pdftotext (poppler) available in Git Bash /mingw64/bin
