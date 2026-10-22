@@ -5,9 +5,9 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at https://hugosantanna.github.io/clo-author/ for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
+**Project:** Gated Communities & State Attitudes (PSC Exposure)
 **Institution:** [YOUR INSTITUTION]
-**Field:** [YOUR FIELD — e.g., Economics, Finance, Marketing, Management, Accounting]
+**Field:** Political Science / Comparative Politics
 **Branch:** main
 
 ---
@@ -16,7 +16,7 @@
 
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
 - **Verify after** -- compile and confirm output at the end of every task
-- **Single source of truth** -- Paper `main.tex` is authoritative; talks and supplements derive from it
+- **Single source of truth** -- Paper `main.qmd` is authoritative; slides and supplements derive from it
 - **Quality gates** -- weighted aggregate score; nothing ships below 80/100; see `quality.md`
 - **Worker-critic pairs** -- every creator has a paired critic; critics never edit files
 - **Auto-memory** -- corrections and preferences are saved automatically via Claude Code's built-in memory system
@@ -34,24 +34,25 @@
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
+psc-exposure/
 ├── CLAUDE.MD                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
 ├── Bibliography_base.bib        # Centralized bibliography
-├── paper/                       # Main LaTeX manuscript (source of truth)
-│   ├── main.tex                 # Primary paper file
-│   ├── sections/                # Section-level .tex files
+├── paper/                       # Main Quarto manuscript (source of truth)
+│   ├── main.qmd                 # Primary paper file (Quarto)
+│   ├── sections/                # Section-level .qmd files
 │   ├── figures/                 # Generated figures (.pdf, .png)
-│   ├── tables/                  # Generated tables (.tex)
-│   ├── talks/                   # Beamer presentations
+│   ├── tables/                  # Generated tables (.tex / .html)
 │   ├── quarto/                  # Quarto RevealJS presentations
-│   ├── preambles/               # LaTeX headers / shared preamble
 │   ├── supplementary/           # Online appendix and supplements
 │   └── replication/             # Replication package for deposit
 ├── data/                        # Project data
-│   ├── raw/                     # Original untouched data (often gitignored)
+│   ├── raw/                     # Original untouched data (gitignored)
 │   └── cleaned/                 # Processed datasets ready for analysis
-├── scripts/                     # Analysis code (R, Stata, Python, Julia)
+├── scripts/                     # Analysis code (R, Python)
+│   ├── scraping/                # Property website scrapers (Python)
+│   ├── cleaning/                # Data cleaning and geocoding (R/Python)
+│   └── analysis/                # Estimation and figures (R)
 ├── quality_reports/             # Plans, session logs, reviews, scores
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
@@ -63,14 +64,17 @@
 ## Commands
 
 ```bash
-# Paper compilation (3-pass, XeLaTeX only)
-cd paper && TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
-BIBINPUTS=..:$BIBINPUTS bibtex main
-TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
-TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
+# Manuscript (Quarto → PDF or HTML)
+cd paper && quarto render main.qmd
 
-# Talk compilation
-cd paper/talks && TEXINPUTS=../preambles:$TEXINPUTS xelatex -interaction=nonstopmode talk.tex
+# Slides (RevealJS)
+cd paper/quarto && quarto render slides.qmd
+
+# Run R analysis script
+Rscript scripts/analysis/main_analysis.R
+
+# Run Python scraper
+python3 scripts/scraping/scrape_property24.py
 ```
 
 ---
@@ -105,14 +109,12 @@ See `quality.md` for weighted aggregation formula.
 
 ---
 
-<!-- CUSTOMIZE: Replace the example entries below with your own
-     Beamer environments for talks. -->
+## Presentation Format
 
-## Beamer Custom Environments (Talks)
+This project uses **Quarto RevealJS** for all presentations — no Beamer/LaTeX talks.
+Slides live in `paper/quarto/`. Render with `quarto render slides.qmd`.
 
-| Environment       | Effect        | Use Case       |
-|-------------------|---------------|----------------|
-| `[your-env]`      | [Description] | [When to use]  |
+For custom RevealJS CSS or SCSS, add to `paper/quarto/_custom.scss`.
 
 ---
 
@@ -130,7 +132,9 @@ Output organization: by-script
 
 | Component | File | Status | Description |
 |-----------|------|--------|-------------|
-| Paper | `paper/main.tex` | [draft/submitted/R&R] | [Brief description] |
-| Data | `scripts/R/` | [complete/in-progress] | [Analysis description] |
-| Replication | `paper/replication/` | [not started/ready] | [Deposit status] |
-| Job Market Talk | `paper/talks/job_market_talk.tex` | -- | [Status] |
+| Paper | `paper/main.qmd` | not started | PSC exposure → state attitudes + violence (South Africa) |
+| Scraper | `scripts/scraping/` | not started | Property24 / Private Property gated community scraper |
+| Data cleaning | `scripts/cleaning/` | not started | Geocoding, PSC classification, Afrobarometer merge |
+| Analysis | `scripts/analysis/` | not started | Spatial RD + DiD estimation |
+| Replication | `paper/replication/` | not started | — |
+| Slides | `paper/quarto/slides.qmd` | not started | — |
