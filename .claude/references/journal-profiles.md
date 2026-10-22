@@ -338,6 +338,58 @@ Each journal profile includes a **Referee pool** that weights which dispositions
 
 ---
 
+## Political Science
+
+### American Political Science Review (APSR)
+**Focus:** All subfields of political science — the flagship generalist journal
+**Bar:** Must make a substantial theoretical or empirical contribution that advances the discipline broadly. Clean design and transparent analysis expected.
+**Domain referee adjusts:** "Would a comparativist, theorist, or IR scholar care about this?" Contribution must speak beyond the subfield. Causal mechanism and theoretical contribution matter as much as empirics.
+**Methods referee adjusts:** Identification must be credible and transparent. Pre-registration viewed favorably. Robustness checks required. Spatial methods must be explained accessibly.
+**Typical concerns:** "Is the theoretical contribution clear?" "Does this generalize beyond South Africa?" "Is the identification strategy convincing to non-specialists?"
+**Referee pool:** CREDIBILITY (high), THEORY (high), POLICY (medium), MEASUREMENT (medium), STRUCTURAL (low), SKEPTIC (medium)
+
+### American Journal of Political Science (AJPS)
+**Focus:** Empirical and formal political science; methodologically rigorous
+**Bar:** Strong identification or formal model required. Methods must be state of the art. AJPS publishes shorter, tighter pieces than APSR.
+**Domain referee adjusts:** Clear contribution to a specific literature. Comparative politics pieces must engage mechanisms seriously.
+**Methods referee adjusts:** Very high methodological bar. Pre-analysis plans and replication materials expected. Spatial methods require explicit validation. Referee pool skews CREDIBILITY and MEASUREMENT heavily.
+**Typical concerns:** "Is the design pre-registered?" "Is the estimand clearly defined?" "How sensitive are results to bandwidth/specification?" "Are multiple testing corrections needed?"
+**Referee pool:** CREDIBILITY (high), MEASUREMENT (high), STRUCTURAL (medium), THEORY (medium), POLICY (low), SKEPTIC (medium)
+
+### Journal of Politics (JOP)
+**Focus:** Broad empirical political science; comparative politics, American, IR
+**Bar:** Solid causal identification and clear contribution. More accessible than APSR/AJPS on methods; less theory-heavy.
+**Domain referee adjusts:** Contribution to the literature must be clearly stated. South Africa context should be framed as a useful test case for broader theories of state legitimacy or urban politics.
+**Methods referee adjusts:** Good identification and appropriate statistical methods. Spatial analysis welcomed if explained clearly. Robustness across reasonable specifications.
+**Typical concerns:** "How does this generalize?" "Is the outcome measure valid?" "Are controls justified?"
+**Referee pool:** CREDIBILITY (high), POLICY (medium), MEASUREMENT (medium), THEORY (medium), STRUCTURAL (low), SKEPTIC (low)
+
+### World Politics (WP)
+**Focus:** Comparative politics and IR; often longer, more theoretically ambitious pieces
+**Bar:** Must engage seriously with theory. Big-picture arguments welcome. Empirical work should illuminate theoretical debates, not just identify an effect.
+**Domain referee adjusts:** Theoretical framing is front and center. Mechanisms must be theorized, not just tested. Historical and comparative depth valued.
+**Methods referee adjusts:** Tolerant of qualitative and mixed-methods approaches. Quantitative pieces must be rigorous but don't need to be cutting-edge in methods.
+**Typical concerns:** "What is the theoretical claim?" "Does the case selection support or undermine the argument?" "Is the causal mechanism identified or just inferred?"
+**Referee pool:** THEORY (high), CREDIBILITY (medium), STRUCTURAL (medium), POLICY (medium), MEASUREMENT (low), SKEPTIC (medium)
+
+### Journal of Conflict Resolution (JCR)
+**Focus:** Armed conflict, political violence, peace, negotiation — quantitative/empirical emphasis
+**Bar:** Clear empirical contribution using credible methods. Must engage existing conflict studies literature (PRIO, Uppsala datasets, ACLED). Effect sizes and practical significance matter.
+**Domain referee adjusts:** Literature positioning within conflict studies is critical. Violence disaggregation by actor type expected. ACLED and UCDP usage should follow field conventions.
+**Methods referee adjusts:** Spatial analysis, duration models, and panel methods all expected. Clustering and spatial autocorrelation tests required. GIS quality matters.
+**Typical concerns:** "How is violence measured and why?" "Is reverse causality addressed?" "Do results hold with alternative conflict datasets?" "What is the unit of analysis and why?"
+**Referee pool:** CREDIBILITY (high), MEASUREMENT (high), POLICY (medium), STRUCTURAL (medium), THEORY (medium), SKEPTIC (medium)
+
+### African Affairs
+**Focus:** African politics, society, economics, and history; area studies flagship
+**Bar:** Deep knowledge of African context required. Comparative-politics framing welcomed but Africa-centrism is a strength, not a weakness here.
+**Domain referee adjusts:** Deep engagement with South African political economy, institutional history, and post-apartheid context expected. Will flag shallow use of "African cases" framing.
+**Methods referee adjusts:** Mixed methods and qualitative/quantitative combinations welcomed. Quantitative work should be rigorous but doesn't need cutting-edge methods. Historical depth often valued more than causal identification.
+**Typical concerns:** "Does the author know South Africa deeply?" "Is the apartheid legacy adequately addressed?" "Is this exploitative of an African case or does it contribute to African scholarship?" "Are local scholars cited?"
+**Referee pool:** MEASUREMENT (high), THEORY (high), POLICY (medium), CREDIBILITY (medium), STRUCTURAL (low), SKEPTIC (medium)
+
+---
+
 ## Add Your Own Journal
 
 Copy this template and add it above this section:
