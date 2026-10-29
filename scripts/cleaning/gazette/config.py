@@ -1,10 +1,10 @@
 # ============================================================
-# config.py — Gazette pilot (P-B) configuration
+# config.py — Gazette pipeline configuration (full coverage)
 # Project: Gated Communities & State Attitudes (PSC Exposure)
 # Purpose: Windows, sources, paths, rate limits and notice patterns for
-#          the Gauteng Provincial Gazette SAR-notice pilot (strategy memo
-#          §9.2 P-B; plan quality_reports/plans/2026-09-30_execution-stage0.md
-#          WP1).
+#          the Gauteng Provincial Gazette SAR-notice pipeline.
+#          Expanded from pilot (2017-18, mid-2021-22) to full coverage
+#          (2014-2024) to capture all SAR notices since policy adoption.
 # Used by: 01_fetch_gazettes.py, 02_extract_sar_notices.py,
 #          03_parse_notices.py, 04_pilot_report.py, tests/test_parse.py
 # Requires: Python >= 3.10
@@ -42,11 +42,17 @@ VALIDATION_SAMPLE = CLEAN_DIR / "validation_sample.csv"     # 03
 PILOT_REPORT = REPORT_DIR / "P-B_gazette_pilot.md"          # 04
 
 # ---------------------------------------------------------------------------
-# Pilot windows (strategy memo §9.2 P-B)
+# Coverage windows — full 2014-2024 range
+# SAR policy adopted 2014; QoL Wave II (2011) is earliest usable survey.
+# Three windows match data source boundaries:
+#   pre_policy: 2014-2016 (SAR adoption, before any QoL treatment wave)
+#   early:      2017-2020 (fills the 2019-20 gap from the pilot)
+#   recent:     2021-2024 (extends past the pilot's June 2022 cutoff)
 # ---------------------------------------------------------------------------
 WINDOWS = {
-    "W1": (date(2017, 1, 1), date(2018, 12, 31)),
-    "W2": (date(2021, 7, 1), date(2022, 6, 30)),
+    "pre_policy": (date(2014, 1, 1), date(2016, 12, 31)),
+    "early":      (date(2017, 1, 1), date(2020, 12, 31)),
+    "recent":     (date(2021, 1, 1), date(2024, 12, 31)),
 }
 # Listing dates contain typos, so issues within this many days of a window
 # are also downloaded; the PDF cover date decides window membership.
@@ -65,7 +71,7 @@ WINDOW_BUFFER_DAYS = 31
 # Source 1: OpenGazettes (Code for Africa mirror of GPW; robots.txt Allow /).
 #           Coverage for ZA-GT ends in early Dec 2021.
 OPENGAZETTES_YEAR_URL = "https://opengazettes.org.za/gazettes/ZA-GT/{year}"
-OPENGAZETTES_YEARS = [2017, 2018, 2021, 2022]  # 2022 expected 404 (logged)
+OPENGAZETTES_YEARS = list(range(2014, 2025))  # many will 404; handled gracefully
 
 # Source 2: Government Printing Works (official publisher). Provincial
 #           gazettes sit in a SharePoint library embedded in a WordPress page;
@@ -74,6 +80,9 @@ OPENGAZETTES_YEARS = [2017, 2018, 2021, 2022]  # 2022 expected 404 (logged)
 GPW_BASE = "https://www.gpwonline.co.za"
 GPW_PAGES = {
     # page slug : folder label (years covered per the page's button text)
+    # NOTE: No known GPW page for pre-2016 gazettes. If one exists (e.g.
+    # "provincial-gazettes-4"), add it here. OpenGazettes is the only
+    # source for 2014-2015 unless GPW has an older archive page.
     "provincial-gazettes-3": "2016-2020",
     "provincial-gazettes-2": "2021-2024",
 }
