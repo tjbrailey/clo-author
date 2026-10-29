@@ -225,3 +225,38 @@
 - Open (strategist): whether RI is primary for A2-P, since WCR was not simulated; RI strata (metro × bin).
 - Deferred: package versions in the checkpoint key.
 **Report:** quality_reports/pilot/code_review_power_r2.md
+
+### 2026-10-28 22:45 — Orchestrator (scope lock + D1 timing check)
+**Phase:** Strategy / Execution
+**Target:** quality_reports/plans/2026-10-28_closure-timing-scope-lock.md; scripts/analysis/closure_timing/01_timing_check.R
+**Score:** D1 = INCONCLUSIVE (pre-specified rule)
+**Verdict:** Scope locked to the closure-timing design (data on disk only; other designs parked). D1, 44 applicant precincts x FY2014-2023, 379 intent notices: IRR per within-precinct SD of lagged log residential burglary 1.06 [0.90, 1.26]; burglary spike 1.09 [0.94, 1.26]. No detectable crime-driven timing at precinct level; large effects ruled out, moderate ones not. D2 (local pre-onset victimisation test) is now binding.
+**Report:** scripts/analysis/closure_timing/output/01_timing_check.csv
+
+### 2026-10-28 23:15 — Orchestrator (closure-timing exposure + main estimates)
+**Phase:** Execution
+**Target:** scripts/analysis/closure_timing/02_build_exposure.R, 03_main_estimates.R
+**Score:** D2 = PASS (pre-onset victimisation +1.2 pp [-4.5, 6.9]); no kill triggered
+**Verdict:** 575 notices -> 376 sites (194 street-level). Sample 6,133 respondents (inside 595, neighbours 2,739, suburb-level 986, comparison 1,813), 135 wards. Main: crime victim inside -3.7 pp (p=.10), neighbours -3.0 pp (p=.07); safe at night inside +0.16 (p=.08); satisfaction with govt security negative, n.s.; secondary outcomes null. Nothing significant at 5%. Event time vs 2+ yrs before onset: victimisation and night safety flat; satisfaction with govt security already -0.27 [-0.47,-0.06] in the 2 years before onset and -0.29 [-0.47,-0.11] 2-5 years after -> dissatisfaction precedes closures (selection), so the attitudinal outcome is not causally identified. Balance: comparison areas more Black African (67.5% vs 44.7% inside). Interview dates added to QoL harmonisation (V/6/7). Known pipeline bug: QoL 7 ward codes are 2021 demarcation but treated as 2016 in the merge pipeline (this analysis uses EA-derived 2016 wards instead).
+**Report:** scripts/analysis/closure_timing/output/; paper/tables/estimation/reg_closure_timing_{primary,secondary}.tex; paper/tables/descriptive/balance_closure_timing.tex; paper/figures/closure_timing_event_time.pdf
+
+### 2026-10-29 — Main session (data cleaning)
+**Phase:** Discovery (data)
+**Target:** WC police personnel panel; Redpath & Nagia-Luddy (2015) tables
+**Score:** N/A
+**Verdict:** New WC station panel 2018-2022 (officers, vehicles; WCPP Q9) parsed, 151/151 stations matched to SAPS; Redpath Table 4 re-transcribed (old CSV was corrupt). With Redpath 2013 this gives WC officer counts for 2013 + 2018-2022.
+**Report:** data/raw/wcpp_q9_2022/README.md; data/raw/redpath_nagia-luddy_2015/README.md
+
+### 2026-10-29 — Main session (design screen)
+**Phase:** Strategy (screen only; no estimation)
+**Target:** Natural experiments on repo data, security/legitimacy angle
+**Score:** N/A
+**Verdict:** Recommended: load shedding x QoL interview dates (waves 6-7), needs Eskom hourly load-reduction series. Viable on disk: Zuma-resignation UESD in wave V (balance holds). Dropped: close ward elections, July 2021 unrest (GPSJS undated), alcohol ban, 67% consent RD, SRA-officer DiD, informal-housing cap.
+**Report:** memory/project_natural_experiment_screen.md
+
+### 2026-10-29 — Main session (data: load shedding)
+**Phase:** Discovery (data)
+**Target:** Load-shedding exposure for QoL wave 7
+**Score:** N/A
+**Verdict:** eskom-calendar HF dataset pulled (CC BY-NC-SA); exposure built for all 13,795 wave-7 respondents (national) and 57% (block). Feasibility: national hours keep 44% of variance after ward+month FE; block evening hours keep 64% after day FE. Balance: block design clean with day+ward FE; national design shows older respondents on heavy days (t~2.5) and fieldwork volume rises with load shedding (r=+0.24). Wave 6 not covered.
+**Report:** data/raw/loadshedding/README.md
